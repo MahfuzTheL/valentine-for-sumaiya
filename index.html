@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sumaiya ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Password Screen */
+#passwordScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    width: 70%;
+    margin: 20px auto;
+    font-size: 1.3em;
+    min-height: 100px;
+}
+
+.gallery img {
+    width: 200px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -10px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+#countdown {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="passwordScreen">
+    <h2>This page is only for Sumaiya 💖</h2>
+    <p>Enter the secret word:</p>
+    <input type="password" id="passwordInput" placeholder="Secret word">
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<div id="mainContent" class="hidden">
+    <h1>Dear Sumaiya ❤️</h1>
+
+    <div id="message"></div>
+
+    <h2>Our Beautiful Moments 💕</h2>
+    <div class="gallery">
+        <!-- Replace image1.jpg etc with your real images -->
+        <img src="image1.jpg">
+        <img src="image2.jpg">
+        <img src="image3.jpg">
+    </div>
+
+    <h2>Countdown To Our Special Day ⏳</h2>
+    <div id="countdown"></div>
+
+    <button onclick="yesClicked()">Will you be mine forever? 💍</button>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+    if(password === "sumaiya123") {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+    } else {
+        alert("Wrong password 😌");
+    }
+}
+
+/* Poetic Typewriter */
+const text = "You walked into my life quietly, but somehow you became the loudest happiness in my heart. Your smile softens my worst days, your voice feels like home, and your presence... feels like destiny. If love had a name, I think it would sound like Sumaiya.";
+
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+typeWriter();
+
+/* Countdown */
+const targetDate = new Date("February 14, 2026 00:00:00").getTime();
+
+setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+}, 1000);
+
+function yesClicked() {
+    document.body.innerHTML = "<h1 style='margin-top:200px;'>You just made me the happiest person alive 💖</h1>";
+}
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
